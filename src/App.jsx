@@ -1,4 +1,4 @@
-import { createBrowserHistory } from "History";
+import { createBrowserHistory } from "history";
 import { Route, Routes } from "react-router-dom";
 import { unstable_HistoryRouter as HistoryRouter } from "react-router-dom";
 import HomeTemplate from "./Pages/Template/HomeTemplate";

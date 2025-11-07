@@ -3,7 +3,7 @@ import * as Yup from "yup";
 import { NavLink } from "react-router-dom";
 import { motion } from "framer-motion";
 import Petlogo from "../../../public/Petlogo.png";
-import png2 from "../../assets/PetShop/png2.jpg";
+import png2 from "../../assets/img/PetShop/png2.jpg";
 
 const Register = () => {
   const frmRegister = useFormik({

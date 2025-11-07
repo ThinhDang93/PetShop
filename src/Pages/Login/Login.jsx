@@ -3,7 +3,7 @@ import * as Yup from "yup";
 import { NavLink } from "react-router-dom";
 import Petlogo from "../../../public/Petlogo.png";
 import { motion } from "framer-motion";
-import png1 from "../../assets/PetShop/png1.jpg";
+import png1 from "../../assets/img/PetShop/png1.jpg";
 
 const Login = () => {
   const validationSchema = Yup.object({

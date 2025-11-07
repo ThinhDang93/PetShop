@@ -1,4 +1,3 @@
-import React from "react";
 import { motion } from "framer-motion";
 import {
   PawPrint,
@@ -9,14 +8,18 @@ import {
   SquareBottomDashedScissors,
   GraduationCap,
 } from "lucide-react";
+import ShopSlideshow from "../../Components/ShopSlideShow";
 
 const Home = () => {
-  const images = import.meta.glob("../../assets/img/*.{jpg,jpeg,png}", {
+  const images = import.meta.glob("../../assets/img/cute/*.{jpg,jpeg,png}", {
     eager: true,
   });
-  const Shopimages = import.meta.glob("../../assets/Petshop/*.{jpg,jpeg,png}", {
-    eager: true,
-  });
+  const Shopimages = import.meta.glob(
+    "../../assets/img/PetShop/*.{jpg,jpeg,png}",
+    {
+      eager: true,
+    }
+  );
 
   const imageList = Object.values(images).map((img) => img.default);
 
@@ -66,52 +69,9 @@ const Home = () => {
             transition={{ duration: 0.8 }}
             className="flex justify-center relative overflow-hidden rounded-3xl shadow-lg w-full md:w-4/5 h-[400px] md:h-[500px]"
           >
-            {Shopimages &&
-              (() => {
-                const shopImageList = Object.values(Shopimages).map(
-                  (img) => img.default
-                );
-                const [currentIndex, setCurrentIndex] = React.useState(0);
-
-                // Auto slide every 2.5s
-                React.useEffect(() => {
-                  const interval = setInterval(() => {
-                    setCurrentIndex(
-                      (prev) => (prev + 1) % shopImageList.length
-                    );
-                  }, 2500);
-                  return () => clearInterval(interval);
-                }, [shopImageList.length]);
-
-                return (
-                  <div className="w-full h-full relative">
-                    {shopImageList.map((src, index) => (
-                      <motion.img
-                        key={index}
-                        src={src}
-                        alt={`Shop ${index + 1}`}
-                        className="absolute top-0 left-0 w-full h-full object-cover rounded-3xl"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: index === currentIndex ? 1 : 0 }}
-                        transition={{ duration: 1.2, ease: "easeInOut" }}
-                      />
-                    ))}
-                    {/* Hiệu ứng overlay + indicator */}
-                    <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2">
-                      {shopImageList.map((_, i) => (
-                        <div
-                          key={i}
-                          className={`w-3 h-3 rounded-full transition-all duration-500 ${
-                            i === currentIndex
-                              ? "bg-orange-500 scale-110"
-                              : "bg-gray-300"
-                          }`}
-                        />
-                      ))}
-                    </div>
-                  </div>
-                );
-              })()}
+            <ShopSlideshow
+              images={Object.values(Shopimages).map((img) => img.default)}
+            />
           </motion.div>
 
           {/* Nội dung */}
